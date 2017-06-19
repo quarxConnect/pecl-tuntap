@@ -70,8 +70,6 @@
   }
   
   // Try to create a new TAP-Device
-  require_once ('/homes/quarxConnect.de/lib/dump.php');
-  
   if (!is_resource ($TAP = tuntap_new (null, TUNTAP_DEVICE_TAP)))
     die ('Failed to create TAP-Device' . "\n");
   
