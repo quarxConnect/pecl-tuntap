@@ -78,7 +78,7 @@
   PHP_FUNCTION (tuntap_new) {
     /* Retrive function-parameters */
     char *name;
-    int name_len;
+    size_t name_len;
     long flags = TUN_TUN_DEV;
     
     if (zend_parse_parameters (ZEND_NUM_ARGS (), "|sl", &name, &name_len, &flags) == FAILURE)
