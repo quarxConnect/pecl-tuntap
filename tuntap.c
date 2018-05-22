@@ -44,6 +44,7 @@
     /* Register TUN/TAP Flags */
     REGISTER_LONG_CONSTANT ("TUNTAP_DEVICE_TUN", IFF_TUN, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT ("TUNTAP_DEVICE_TAP", IFF_TAP, CONST_CS | CONST_PERSISTENT);
+    REGISTER_LONG_CONSTANT ("TUNTAP_DEVICE_NO_PI", IFF_NO_PI, CONST_CS | CONST_PERSISTENT);
     REGISTER_LONG_CONSTANT ("TUNTAP_DEVICE_EXCL", IFF_TUN_EXCL, CONST_CS | CONST_PERSISTENT);
     
     return SUCCESS;
@@ -77,7 +78,7 @@
   PHP_FUNCTION (tuntap_new) {
     /* Retrive function-parameters */
     char *name;
-    int name_len;
+    size_t name_len;
     long flags = TUN_TUN_DEV;
     
     if (zend_parse_parameters (ZEND_NUM_ARGS (), "|sl", &name, &name_len, &flags) == FAILURE)
@@ -103,6 +104,8 @@
     
     if ((flags & IFF_TUN_EXCL) == IFF_TUN_EXCL)
       ifr.ifr_flags |= IFF_TUN_EXCL;
+    if ((flags & IFF_NO_PI) == IFF_NO_PI)
+      ifr.ifr_flags |= IFF_NO_PI;
     
     /*
       IFF_MULTI_QUEUE

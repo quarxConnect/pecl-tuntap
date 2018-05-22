@@ -55,6 +55,7 @@ Returns a boolean indicating success or failure.
 ## Constants
 * `TUNTAP_DEVICE_TUN` Creates a TUN-Device
 * `TUNTAP_DEVICE_TAP` Creates a TAP-Device
+* `TUNTAP_DEVICE_NO_PI` Do not provide packet information
 * `TUNTAP_DEVICE_EXCL` Don't remember what this should be, maybe something like exclusive
 
 ## Example
